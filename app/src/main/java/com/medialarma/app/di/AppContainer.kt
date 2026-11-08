@@ -10,7 +10,9 @@ import com.medialarma.app.data.remote.AuthInterceptor
 import com.medialarma.app.data.remote.MediAlarmaApi
 import com.medialarma.app.data.remote.TokenAuthenticator
 import com.medialarma.app.data.repository.AuthRepositoryImpl
+import com.medialarma.app.data.repository.MedicationRepositoryImpl
 import com.medialarma.app.domain.repository.AuthRepository
+import com.medialarma.app.domain.repository.MedicationRepository
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -42,4 +44,5 @@ class AppContainer(context: Context) {
     private val errorParser = ApiErrorParser(json)
 
     val authRepository: AuthRepository = AuthRepositoryImpl(api, tokenStore, errorParser)
+    val medicationRepository: MedicationRepository = MedicationRepositoryImpl(api, errorParser)
 }
